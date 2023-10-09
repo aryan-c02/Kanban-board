@@ -1,0 +1,52 @@
+.board {
+
+    display: flex;
+    flex-direction: column;
+    min-width: max-content;
+    max-width: 16rem;
+
+
+
+
+}
+
+
+
+.board-top {
+
+    width: 18rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-icon-container {
+    margin-top: 0.2rem;
+    margin-right: 0.3rem;
+}
+
+.avatar-container {
+    margin-top: 0.2rem;
+    margin-right: 0.3rem;
+}
+
+.board-top-title {
+    flex: 1;
+    font-size: 16px;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+.moreHorizontal-wrapper {
+    width: 1rem;
+    height: 1rem;
+}
+
+.board-card-container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}

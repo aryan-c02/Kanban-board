@@ -1,0 +1,21 @@
+.home-container {
+    width: max-content;
+    height: max-content;
+}
+
+.top-bar-container {
+
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+.task-container {
+    background-color: #f4f5f8;
+    width: max-content;
+    overflow-x: auto;
+    flex: 1;
+}
