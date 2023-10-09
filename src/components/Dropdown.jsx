@@ -14,7 +14,6 @@ const Dropdown = (props) => {
 
 
     const buttonClickHandler = () => {
-        console.log(isActive);
         setIsActive(!isActive);
     }
 
@@ -49,7 +48,7 @@ const Dropdown = (props) => {
                 buttonRef.current &&
                 !buttonRef.current.contains(event.target)
             ) {
-                // Click occurred outside of both the button and the div
+
                 setIsActive(false);
             }
         };

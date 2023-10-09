@@ -1,3 +1,5 @@
+.task-board-container {}
+
 .board-wrapper {
     width: max-content;
     height: 100vh;
@@ -7,4 +9,17 @@
     flex-direction: row;
     gap: 5rem;
     padding: 2rem 5rem;
+
+
+}
+
+
+@media (max-width: 720px) {
+    .board-wrapper {
+        flex-direction: column;
+        width: 100vw;
+        height: max-content;
+        gap: 3rem;
+
+    }
 }

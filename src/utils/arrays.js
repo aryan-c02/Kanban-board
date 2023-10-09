@@ -1,7 +1,7 @@
 
 
 const statusArray = [
-    "Backlog", "Todo", "In Progress", "Done", "Canceled"
+    "Backlog", "Todo", "In progress", "Done", "Canceled"
 ]
 
 const priorityArray = [

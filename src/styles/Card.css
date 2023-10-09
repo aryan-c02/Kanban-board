@@ -1,6 +1,6 @@
 .card-container {
 
-    max-width: 16rem;
+    max-width: 20rem;
     height: max-content;
     background-color: #ffffff;
     display: flex;
@@ -35,14 +35,19 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
-    margin-top: 0.3rem;
+
+    margin-top: 0.4rem;
+    gap: 0.2rem;
 }
 
+
+
+
 .status-image-tag {
+
     border-radius: 100%;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1rem;
+    width: 1rem;
 }
 
 .title-container {
@@ -120,4 +125,18 @@
     color: #6b6f76;
     font-size: 14px;
 
+}
+
+
+@media (max-width: 720px) {
+    .card-container {
+        width: 80vw;
+        padding: 0.2rem 0.8rem;
+
+    }
+
+    .title-container {
+        width: 80vw;
+
+    }
 }

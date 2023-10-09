@@ -4,10 +4,6 @@
     flex-direction: column;
     min-width: max-content;
     max-width: 16rem;
-
-
-
-
 }
 
 
@@ -45,8 +41,18 @@
 }
 
 .board-card-container {
-    margin-top: 3rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem
+}
+
+
+@media (max-width: 720px) {
+
+    .board {
+        width: 70vw;
+
+    }
+
 }

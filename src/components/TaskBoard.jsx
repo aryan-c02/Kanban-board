@@ -3,6 +3,9 @@ import { statusArray, priorityArray, userArray } from '../utils/arrays';
 import Board from './Board';
 import "../styles/TaskBoard.css"
 import Avatar from './Avatar';
+import { priorityMapping, userMapping } from '../utils/mapping';
+import transFormString from '../utils/transformString';
+
 
 const TaskBoard = (props) => {
 
@@ -26,16 +29,39 @@ const TaskBoard = (props) => {
     }, [grouping]);
 
 
+    const sortedArrays = {};
 
-    console.log(grouping);
+    if (grouping == "priority") {
+        priorityArray.forEach((value) => {
+            const subArray = tickets.filter((item) => priorityMapping[item.priority] == value);
+            sortedArrays[value] = subArray;
+        })
+    }
+    else if (grouping == "status") {
+        statusArray.forEach((value) => {
+            const subArray = tickets.filter((item) => item.status == value);
+            sortedArrays[value] = subArray;
+        })
+    }
+    else {
+        userArray.forEach((value) => {
+            const subArray = tickets.filter((item) => userMapping[item.userId] == value);
+            sortedArrays[value] = subArray;
+        })
+    }
+
+
+
+
+
 
     return (
 
-        <div >
+        <div className='task-board-container' >
 
             {
 
-                <div className='board-wrapper'>
+                grouping == "priority" && <div className='board-wrapper'>
                     {
                         array && array.map((item, key) => {
                             return (
@@ -44,8 +70,9 @@ const TaskBoard = (props) => {
                                     <Board heading={item}
                                         key={key}
                                         users={users}
-                                        tickets={tickets}
-                                        grouping={grouping} />
+                                        tickets={sortedArrays[item]}
+                                        grouping={grouping}
+                                        ordering={ordering} />
 
                                 </div>
                             )
@@ -55,6 +82,53 @@ const TaskBoard = (props) => {
 
             }
 
+
+            {
+
+                grouping == "status" && <div className='board-wrapper'>
+                    {
+                        array && array.map((item, key) => {
+                            return (
+                                <div >
+
+                                    <Board heading={item}
+                                        key={key}
+                                        users={users}
+                                        tickets={sortedArrays[item]}
+                                        grouping={grouping}
+                                        ordering={ordering} />
+
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+
+            }
+
+
+            {
+
+                grouping == "user" && <div className='board-wrapper'>
+                    {
+                        array && array.map((item, key) => {
+                            return (
+                                <div >
+
+                                    <Board heading={item}
+                                        key={key}
+                                        users={users}
+                                        tickets={sortedArrays[item]}
+                                        grouping={grouping}
+                                        ordering={ordering} />
+
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+
+            }
 
 
 

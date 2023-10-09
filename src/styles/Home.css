@@ -1,6 +1,7 @@
 .home-container {
-    width: max-content;
-    height: max-content;
+    width: 100vw;
+    height: 60px;
+
 }
 
 .top-bar-container {
@@ -8,14 +9,23 @@
     height: 5rem;
     display: flex;
     align-items: center;
+
 }
 
 
 
 
 .task-container {
+    width: 100vw;
+    height: calc(100vh - 60px);
+
+
+
     background-color: #f4f5f8;
     width: max-content;
     overflow-x: auto;
     flex: 1;
+
 }
+
+@media(max-width : 720px) {}

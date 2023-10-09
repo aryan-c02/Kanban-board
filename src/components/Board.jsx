@@ -2,21 +2,45 @@ import React from 'react'
 import "../styles/Board.css"
 import Card from './Card'
 import Avatar from './Avatar';
+import transFormString from "../utils/transformString.js"
+import { useState, useEffect } from 'react';
+import { statusArray, priorityArray } from '../utils/arrays';
+import { priorityMapping, userMapping } from '../utils/mapping';
 
 const Board = (props) => {
 
-    const { heading, key, users, tickets, grouping } = props;
+    const { heading, key, users, tickets, grouping, ordering } = props;
 
-    function transformString(heading) {
-        const words = heading.split(' ');
-        const transformedString = words
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join('');
+    let sortedData = {};
 
-        return transformedString;
+
+    if (tickets != null) {
+
+        function sortByOrderingValue(data, ordering) {
+
+            const customCompare = (a, b) => {
+                if (ordering === 'priority') {
+                    return -1 * a.priority + b.priority;
+                } else if (ordering === 'title') {
+                    return userMapping[a.userId].localeCompare(userMapping[b.userId]);
+                }
+
+            };
+            return data.sort(customCompare);
+        }
+
+
+        sortedData = sortByOrderingValue(tickets, ordering);
     }
 
-    console.log(grouping);
+
+    console.log(sortedData);
+
+
+
+    function sortByPriorityDescending(data) {
+        return data.sort((a, b) => b.priority - a.priority);
+    }
 
 
     return (
@@ -24,7 +48,7 @@ const Board = (props) => {
 
             <div className='board-top'>
                 {grouping !== "user" ? (<div className='title-icon-container'>
-                    <img className='moreHorizontal-wrapper' src={`/${grouping}-icons/${transformString(heading)}.svg`} alt='icon' />
+                    <img className='moreHorizontal-wrapper' src={`/${grouping}-icons/${transFormString(heading)}.svg`} alt='icon' />
                 </div>) :
                     (
                         <div className='avatar-container'>
@@ -43,15 +67,35 @@ const Board = (props) => {
             </div>
 
 
-            <div className='board-card-container'>
-
-                <Card />
-                <Card />
 
 
-            </div>
 
-        </div>
+
+
+
+
+            {
+
+                tickets && tickets.map((item) => (
+                    <div className='board-card-container' key={item.id}>
+                        <Card title={item.title} id={item.id}
+                            grouping={grouping} name={item.userId}
+                            priority={item.priority} status={item.status}
+                            tag={item.tag} />
+                    </div>
+                ))
+
+            }
+
+
+
+
+
+
+
+
+
+        </div >
     )
 }
 
