@@ -52,6 +52,27 @@ const TaskBoard = (props) => {
         })
     }
 
+    let sortedData;
+
+
+
+    function sortByOrderingValue(data, ordering) {
+
+        const customCompare = (a, b) => {
+            if (ordering === 'priority') {
+                return -1 * a.priority + b.priority;
+            } else if (ordering === 'title') {
+                return userMapping[a.userId].localeCompare(userMapping[b.userId]);
+            }
+        };
+        if (data != null) {
+            return data.sort(customCompare);
+        }
+    }
+
+
+    // sortedData = sortByOrderingValue(tickets, ordering);
+
 
 
 
@@ -68,7 +89,7 @@ const TaskBoard = (props) => {
                             return (
                                 <div >
                                     <Board heading={item} key={key} users={users}
-                                        tickets={sortedArrays[item]} grouping={grouping}
+                                        tickets={sortByOrderingValue(sortedArrays[item], ordering)} grouping={grouping}
                                         ordering={ordering} />
                                 </div>
                             )

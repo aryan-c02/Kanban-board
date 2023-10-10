@@ -1,6 +1,8 @@
 .card-container {
 
+
     max-width: 20rem;
+    min-width: 16rem;
     height: max-content;
     background-color: #ffffff;
     display: flex;

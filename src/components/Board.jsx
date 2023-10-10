@@ -7,29 +7,7 @@ import { userMapping } from '../utils/mapping';
 
 const Board = (props) => {
 
-    const { heading, tickets, grouping, ordering } = props;
-
-    let sortedData = {};
-
-
-    if (tickets != null) {
-
-        function sortByOrderingValue(data, ordering) {
-
-            const customCompare = (a, b) => {
-                if (ordering === 'priority') {
-                    return -1 * a.priority + b.priority;
-                } else if (ordering === 'title') {
-                    return userMapping[a.userId].localeCompare(userMapping[b.userId]);
-                }
-            };
-            return data.sort(customCompare);
-        }
-
-
-        sortedData = sortByOrderingValue(tickets, ordering);
-    }
-
+    const { heading, tickets, grouping } = props;
 
 
     return (
@@ -56,7 +34,7 @@ const Board = (props) => {
             </div>
 
             {
-                sortedData && sortedData.map((item) => (
+                tickets && tickets.map((item) => (
                     <div className='board-card-container' key={item.id}>
                         <Card title={item.title} id={item.id}
                             grouping={grouping} name={item.userId}

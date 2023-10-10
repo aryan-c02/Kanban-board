@@ -1,20 +1,22 @@
 .board {
-
     display: flex;
     flex-direction: column;
     min-width: max-content;
-    max-width: 16rem;
+    max-width: 20rem;
+
 }
 
 
 
 .board-top {
 
-    width: 18rem;
+    width: auto;
+    min-width: 16rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .title-icon-container {
