@@ -29,10 +29,8 @@ const Card = (props) => {
                             <Avatar name={userMapping[name]} />
                         </div>
 
-                    ) :
-                        (<div>
+                    ) : (<div />)
 
-                        </div>)
                 }
 
 
@@ -50,10 +48,8 @@ const Card = (props) => {
                             <img className='status-image-tag' src={`/status-icons/${transFormString(status)}.svg`} alt='icon' />
                         </div>
 
-                    ) :
-                        (<div>
+                    ) : null
 
-                        </div>)
                 }
 
 
@@ -76,16 +72,14 @@ const Card = (props) => {
 
                         </div>
 
-                    ) :
-                        null
+                    ) : (<div />)
+
                 }
 
 
                 <div className='feature-request-container'>
 
-                    <div className='feature-request-icon-container'>
-
-                    </div>
+                    <div className='feature-request-icon-container' />
 
                     <div className='feature-request-text-wrapper'>
                         {tag[0]}

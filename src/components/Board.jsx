@@ -3,7 +3,7 @@ import "../styles/Board.css"
 import Card from './Card'
 import Avatar from './Avatar';
 import transFormString from "../utils/transformString.js"
-import { userMapping } from '../utils/mapping';
+
 
 const Board = (props) => {
 

@@ -71,11 +71,6 @@ const TaskBoard = (props) => {
     }
 
 
-    // sortedData = sortByOrderingValue(tickets, ordering);
-
-
-
-
 
 
     return (
