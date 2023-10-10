@@ -29,7 +29,7 @@ const Card = (props) => {
                             <Avatar name={userMapping[name]} />
                         </div>
 
-                    ) : (<div />)
+                    ) : null
 
                 }
 
@@ -72,7 +72,7 @@ const Card = (props) => {
 
                         </div>
 
-                    ) : (<div />)
+                    ) : null
 
                 }
 
