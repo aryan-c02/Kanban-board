@@ -52,7 +52,7 @@ const TaskBoard = (props) => {
         })
     }
 
-    let sortedData;
+
 
 
 

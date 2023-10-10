@@ -7,7 +7,6 @@
     gap: 5rem;
     padding: 2rem 5rem;
 
-
 }
 
 
@@ -17,5 +16,18 @@
         width: 100vw;
         gap: 3rem;
         height: max-content;
+        padding: 2rem 5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .board-wrapper {
+        flex-direction: column;
+        width: 100vw;
+        gap: 3rem;
+        height: max-content;
+        padding: 2rem 2.5rem;
+
+
     }
 }

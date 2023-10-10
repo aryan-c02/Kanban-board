@@ -1,6 +1,6 @@
 .home-container {
     width: 100vw;
-    height: 60px;
+    max-height: max-content;
 }
 
 .top-bar-container {
@@ -14,10 +14,12 @@
 
 .task-container {
     width: 100vw;
-    height: calc(100vh - 60px);
+    height: max-content;
     background-color: #f4f5f8;
     width: max-content;
     overflow-x: auto;
     flex: 1;
+
+
 
 }
