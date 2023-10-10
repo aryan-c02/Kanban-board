@@ -13,9 +13,8 @@ const Dropdown = (props) => {
 
 
 
-    const buttonClickHandler = () => {
-        setIsActive(!isActive);
-    }
+    const buttonClickHandler = () => setIsActive(!isActive);
+
 
     const groupingChangeHandler = (e) => {
 
@@ -42,13 +41,11 @@ const Dropdown = (props) => {
 
         const handleClickOutside = (event) => {
             if (
-                isActive &&
-                divRef.current &&
+                isActive && divRef.current &&
                 !divRef.current.contains(event.target) &&
                 buttonRef.current &&
                 !buttonRef.current.contains(event.target)
             ) {
-
                 setIsActive(false);
             }
         };
@@ -70,23 +67,15 @@ const Dropdown = (props) => {
                 <button ref={buttonRef} onClick={buttonClickHandler} className='display-button' >
 
                     <div className='icon-one-container' >
-
                         <img className='icon-one-wrapper' src="/assests/filter-icon.png" alt='icon' />
-
                     </div>
-
-
-
-
 
                     <div className='display-text-wrapper' >
                         Display
                     </div>
 
-                    <div className={`dropdown-icon-container ${isActive == true ? "down" : "up"}`} >
-
-                        <img className={`arrow-wrapper ${isActive ? "down" : "up"}  `} src='/assests/arrowDown.png' alt='icon' />
-
+                    <div className={isActive ? 'active-class' : 'inactive-class'} >
+                        <img className="arrow-icon-container" src='/assests/arrowDown.png' alt='icon' />
                     </div>
 
                 </button>

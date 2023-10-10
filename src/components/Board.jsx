@@ -3,13 +3,11 @@ import "../styles/Board.css"
 import Card from './Card'
 import Avatar from './Avatar';
 import transFormString from "../utils/transformString.js"
-import { useState, useEffect } from 'react';
-import { statusArray, priorityArray } from '../utils/arrays';
-import { priorityMapping, userMapping } from '../utils/mapping';
+import { userMapping } from '../utils/mapping';
 
 const Board = (props) => {
 
-    const { heading, key, users, tickets, grouping, ordering } = props;
+    const { heading, tickets, grouping, ordering } = props;
 
     let sortedData = {};
 
@@ -24,7 +22,6 @@ const Board = (props) => {
                 } else if (ordering === 'title') {
                     return userMapping[a.userId].localeCompare(userMapping[b.userId]);
                 }
-
             };
             return data.sort(customCompare);
         }
@@ -33,14 +30,6 @@ const Board = (props) => {
         sortedData = sortByOrderingValue(tickets, ordering);
     }
 
-
-    console.log(sortedData);
-
-
-
-    function sortByPriorityDescending(data) {
-        return data.sort((a, b) => b.priority - a.priority);
-    }
 
 
     return (
@@ -59,24 +48,15 @@ const Board = (props) => {
 
                 <div className='board-top-title'>{heading}</div>
                 <div>
-                    <img className='moreHorizontal-wrapper' src="/assests/add.svg" />
+                    <img className='moreHorizontal-wrapper' src="/assests/add.svg" alt='plus-icon' />
                 </div>
                 <div>
-                    <img className='moreHorizontal-wrapper' src="/assests/moreHorizontal.svg" />
+                    <img className='moreHorizontal-wrapper' src="/assests/moreHorizontal.svg" alt='more-icon' />
                 </div>
             </div>
 
-
-
-
-
-
-
-
-
             {
-
-                tickets && tickets.map((item) => (
+                sortedData && sortedData.map((item) => (
                     <div className='board-card-container' key={item.id}>
                         <Card title={item.title} id={item.id}
                             grouping={grouping} name={item.userId}
@@ -86,14 +66,6 @@ const Board = (props) => {
                 ))
 
             }
-
-
-
-
-
-
-
-
 
         </div >
     )

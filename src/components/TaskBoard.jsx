@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { statusArray, priorityArray, userArray } from '../utils/arrays';
 import Board from './Board';
 import "../styles/TaskBoard.css"
-import Avatar from './Avatar';
 import { priorityMapping, userMapping } from '../utils/mapping';
-import transFormString from '../utils/transformString';
+
 
 
 const TaskBoard = (props) => {
@@ -12,6 +11,7 @@ const TaskBoard = (props) => {
     const { grouping, ordering, users, tickets } = props;
     const [array, setArray] = useState([]);
 
+    // initilazing array on the basis of grouping value
     const IntializeArray = () => {
         if (grouping == "status") {
             setArray(statusArray);
@@ -29,6 +29,8 @@ const TaskBoard = (props) => {
     }, [grouping]);
 
 
+
+
     const sortedArrays = {};
 
     if (grouping == "priority") {
@@ -43,7 +45,7 @@ const TaskBoard = (props) => {
             sortedArrays[value] = subArray;
         })
     }
-    else {
+    else if (grouping == "user") {
         userArray.forEach((value) => {
             const subArray = tickets.filter((item) => userMapping[item.userId] == value);
             sortedArrays[value] = subArray;
@@ -60,78 +62,20 @@ const TaskBoard = (props) => {
         <div className='task-board-container' >
 
             {
-
-                grouping == "priority" && <div className='board-wrapper'>
+                <div className='board-wrapper'>
                     {
                         array && array.map((item, key) => {
                             return (
                                 <div >
-
-                                    <Board heading={item}
-                                        key={key}
-                                        users={users}
-                                        tickets={sortedArrays[item]}
-                                        grouping={grouping}
+                                    <Board heading={item} key={key} users={users}
+                                        tickets={sortedArrays[item]} grouping={grouping}
                                         ordering={ordering} />
-
                                 </div>
                             )
                         })
                     }
                 </div>
-
             }
-
-
-            {
-
-                grouping == "status" && <div className='board-wrapper'>
-                    {
-                        array && array.map((item, key) => {
-                            return (
-                                <div >
-
-                                    <Board heading={item}
-                                        key={key}
-                                        users={users}
-                                        tickets={sortedArrays[item]}
-                                        grouping={grouping}
-                                        ordering={ordering} />
-
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-
-            }
-
-
-            {
-
-                grouping == "user" && <div className='board-wrapper'>
-                    {
-                        array && array.map((item, key) => {
-                            return (
-                                <div >
-
-                                    <Board heading={item}
-                                        key={key}
-                                        users={users}
-                                        tickets={sortedArrays[item]}
-                                        grouping={grouping}
-                                        ordering={ordering} />
-
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-
-            }
-
-
-
 
         </div>
 

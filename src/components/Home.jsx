@@ -31,7 +31,6 @@ const Home = () => {
     const fetchData = async (url) => {
 
         try {
-
             const res = await fetch(url);
             const data = await res.json();
 
@@ -50,7 +49,6 @@ const Home = () => {
 
     useEffect(() => {
         fetchData(url);
-
     }, []);
 
 
@@ -65,6 +63,7 @@ const Home = () => {
                     grouping={grouping}
                     ordering={ordering} />
             </div>
+
 
             {
                 isLoading ? null : (
