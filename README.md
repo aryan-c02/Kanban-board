@@ -13,16 +13,6 @@ Aryan Chouhan
 ## API Reference
 
 QuickSell API - https://api.quicksell.co/v1/internal/frontend-assignment
-## Appendix
-
-Any additional information goes here
-
-
-## Demo
-
-Insert gif or link to demo
-
-
 ## Documentation
 
 
